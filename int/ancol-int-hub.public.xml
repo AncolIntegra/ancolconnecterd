@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="ancol-int-hub" schema="public" type="PostgreSQL - 15.17">
+   <tables>
+      <table catalog="ancol-int-hub" name="docsequence" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="docsequence_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="doc_code" nullable="false" remarks="" size="3" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="doc_name" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="prefix" nullable="true" remarks="" size="22" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="suffix" nullable="true" remarks="" size="22" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="year" nullable="false" remarks="" size="2" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="4" digits="0" id="6" name="seqdigit" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="7" name="currentnext" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="8" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="9" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="last_sequence" nullable="true" remarks="" size="100" type="varchar" typeCode="12"/>
+         <primaryKey column="docsequence_id" sequenceNumberInPK="1"/>
+         <index name="docsequence_pkey" unique="true">
+            <column ascending="true" name="docsequence_id"/>
+         </index>
+         <index name="fki_fk_docsequence_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_docsequence_updated" unique="false">
+            <column ascending="true" name="updated_by"/>
+         </index>
+      </table>
+      <table catalog="ancol-int-hub" name="orderdetails" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <child catalog="ancol-int-hub" column="orderdetail_id" foreignKey="fk_orderticket_orderdetails" implied="false" onDeleteCascade="false" schema="public" table="orderticket"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="order_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-int-hub" column="order_id" foreignKey="fk_orderdetails_order" implied="false" onDeleteCascade="false" schema="public" table="orders"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="product_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-int-hub" column="product_id" foreignKey="fk_orderdetails_product" implied="false" onDeleteCascade="false" schema="public" table="products"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="qty" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="0" digits="2" id="4" name="price" nullable="false" remarks="" size="18" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="0" digits="2" id="5" name="total_amt" nullable="false" remarks="" size="18" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="7" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <primaryKey column="orderdetail_id" sequenceNumberInPK="1"/>
+         <index name="orderdetails_pkey" unique="true">
+            <column ascending="true" name="orderdetail_id"/>
+         </index>
+         <index name="fki_fk_orderdetails_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_orderdetails_order" unique="false">
+            <column ascending="true" name="order_id"/>
+         </index>
+         <index name="fki_fk_orderdetails_product" unique="false">
+            <column ascending="true" name="product_id"/>
+         </index>
+         <index name="fki_fk_orderdetails_updated" unique="false">
+            <column ascending="true" name="updated_by"/>
+         </index>
+      </table>
+      <table catalog="ancol-int-hub" name="orders" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="order_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <child catalog="ancol-int-hub" column="order_id" foreignKey="fk_orderdetails_order" implied="false" onDeleteCascade="false" schema="public" table="orderdetails"/>
+            <child catalog="ancol-int-hub" column="order_id" foreignKey="fk_payments_orders" implied="false" onDeleteCascade="false" schema="public" table="payments"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="order_no" nullable="false" remarks="" size="40" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="visit_date" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="3" name="order_date" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="0" digits="2" id="4" name="total_amt" nullable="false" remarks="" size="18" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="7" name="created" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="8" name="updated" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="status" nullable="true" remarks="" size="2" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="phone" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="email" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="loyalti_no" nullable="true" remarks="" size="40" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="bsuid" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="flow_token" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="order_id" sequenceNumberInPK="1"/>
+         <index name="orders_pkey" unique="true">
+            <column ascending="true" name="order_id"/>
+         </index>
+         <index name="fki_fk_orders_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_orders_updated" unique="false">
+            <column ascending="true" name="updated_by"/>
+         </index>
+      </table>
+      <table catalog="ancol-int-hub" name="orderticket" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="orderticket_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-int-hub" column="orderdetail_id" foreignKey="fk_orderticket_orderdetails" implied="false" onDeleteCascade="false" schema="public" table="orderdetails"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="product_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-int-hub" column="product_id" foreignKey="fk_orderticket_product" implied="false" onDeleteCascade="false" schema="public" table="products"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ticket_no" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="site_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-int-hub" column="site_id" foreignKey="fk_orderticket_sites" implied="false" onDeleteCascade="false" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="ticket_date" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="orderticket_id" sequenceNumberInPK="1"/>
+         <index name="orderticket_pkey" unique="true">
+            <column ascending="true" name="orderticket_id"/>
+         </index>
+         <index name="fki_fk_orderticket_orderdetails" unique="false">
+            <column ascending="true" name="orderdetail_id"/>
+         </index>
+         <index name="fki_fk_orderticket_product" unique="false">
+            <column ascending="true" name="product_id"/>
+         </index>
+         <index name="fki_fk_orderticket_sites" unique="false">
+            <column ascending="true" name="site_id"/>
+         </index>
+      </table>
+      <table catalog="ancol-int-hub" name="paymentgateway" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="paymentgateway_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <child catalog="ancol-int-hub" column="paymentgateway_id" foreignKey="fk_payments_paymentgateways" implied="false" onDeleteCascade="false" schema="public" table="payments"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="pg_code" nullable="false" remarks="" size="5" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="paymentgateway_id" sequenceNumberInPK="1"/>
+         <index name="paymentgateway_pkey" unique="true">
+            <column ascending="true" name="paymentgateway_id"/>
+         </index>
+         <index name="fki_fk_paymentgateway_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_paymentgateway_updated" unique="false">
+            <column ascending="true" name="updated_by"/>
+         </index>
+      </table>
+      <table catalog="ancol-int-hub" name="payments" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="payment_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="payment_code" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="payment_date" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="paymentgateway_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-int-hub" column="paymentgateway_id" foreignKey="fk_payments_paymentgateways" implied="false" onDeleteCascade="false" schema="public" table="paymentgateway"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="order_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-int-hub" column="order_id" foreignKey="fk_payments_orders" implied="false" onDeleteCascade="false" schema="public" table="orders"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="2" id="5" name="payment_amt" nullable="false" remarks="" size="18" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="7" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <primaryKey column="payment_id" sequenceNumberInPK="1"/>
+         <index name="payment_pkey" unique="true">
+            <column ascending="true" name="payment_id"/>
+         </index>
+         <index name="fki_fk_payment_paymentgateways" unique="false">
+            <column ascending="true" name="paymentgateway_id"/>
+         </index>
+         <index name="fki_fk_payments_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_payments_orders" unique="false">
+            <column ascending="true" name="order_id"/>
+         </index>
+         <index name="fki_fk_payments_updated" unique="false">
+            <column ascending="true" name="updated_by"/>
+         </index>
+      </table>
+      <table catalog="ancol-int-hub" name="products" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="product_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <child catalog="ancol-int-hub" column="product_id" foreignKey="fk_orderdetails_product" implied="false" onDeleteCascade="false" schema="public" table="orderdetails"/>
+            <child catalog="ancol-int-hub" column="product_id" foreignKey="fk_orderticket_product" implied="false" onDeleteCascade="false" schema="public" table="orderticket"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="code" nullable="false" remarks="" size="40" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="site_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-int-hub" column="site_id" foreignKey="fk_products_sites" implied="false" onDeleteCascade="true" schema="public" table="sites"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <primaryKey column="product_id" sequenceNumberInPK="1"/>
+         <index name="products_pkey" unique="true">
+            <column ascending="true" name="product_id"/>
+         </index>
+         <index name="fki_fk_product_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_product_sites" unique="false">
+            <column ascending="true" name="site_id"/>
+         </index>
+         <index name="fki_fk_product_updated" unique="false">
+            <column ascending="true" name="updated_by"/>
+         </index>
+      </table>
+      <table catalog="ancol-int-hub" name="sites" numRows="6" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="site_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <child catalog="ancol-int-hub" column="site_id" foreignKey="fk_orderticket_sites" implied="false" onDeleteCascade="false" schema="public" table="orderticket"/>
+            <child catalog="ancol-int-hub" column="site_id" foreignKey="fk_products_sites" implied="false" onDeleteCascade="true" schema="public" table="products"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="sites_code" nullable="false" remarks="" size="10" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="seqno" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="site_id" sequenceNumberInPK="1"/>
+         <index name="sites_pkey" unique="true">
+            <column ascending="true" name="site_id"/>
+         </index>
+         <index name="fki_fk_sites_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_sites_updated" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+      </table>
+   </tables>
+</database>

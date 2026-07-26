@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="ancol-rec-hub" schema="public" type="PostgreSQL - 15.17">
+   <sequences>
+      <sequence increment="1" name="refresh_tokens_id_seq" startValue="1"/>
+   </sequences>
+   <tables>
+      <table catalog="ancol-rec-hub" name="customers" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="customer_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name_hashed" nullable="true" remarks="" size="64" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="phone" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="phone_hashed" nullable="true" remarks="" size="64" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="email" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="email_hashed" nullable="true" remarks="" size="64" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="customer_code" nullable="true" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="loyalti_no" nullable="true" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="10" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="customer_id" sequenceNumberInPK="1"/>
+         <index name="customers_pkey" unique="true">
+            <column ascending="true" name="customer_id"/>
+         </index>
+      </table>
+      <table catalog="ancol-rec-hub" name="modules" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="module_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <child catalog="ancol-rec-hub" column="module_id" foreignKey="fk_rolemodules_module" implied="false" onDeleteCascade="false" schema="public" table="role_modules"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="module_code" nullable="false" remarks="" size="10" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="module_name" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="sortno" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="module_id" sequenceNumberInPK="1"/>
+         <index name="modules_pkey" unique="true">
+            <column ascending="true" name="module_id"/>
+         </index>
+      </table>
+      <table catalog="ancol-rec-hub" name="refresh_tokens" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('refresh_tokens_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="token" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="expiry_date" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_refreshtokens_user" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="refresh_tokens_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="fki_fk_refreshtokens_tokens" unique="false">
+            <column ascending="true" name="token"/>
+         </index>
+         <index name="fki_fk_refreshtokens_user" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table catalog="ancol-rec-hub" name="role_modules" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="module_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="module_id" foreignKey="fk_rolemodules_module" implied="false" onDeleteCascade="false" schema="public" table="modules"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="role_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="role_id" foreignKey="fk_rolemodules_role" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_rolemodules_updated" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_rolemodules_created" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="7" name="read_only" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="module_id" sequenceNumberInPK="1"/>
+         <primaryKey column="role_id" sequenceNumberInPK="2"/>
+         <index name="rolemodules_pkey" unique="true">
+            <column ascending="true" name="module_id"/>
+            <column ascending="true" name="role_id"/>
+         </index>
+         <index name="fki_fk_rolemodules_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_rolemodules_module" unique="false">
+            <column ascending="true" name="module_id"/>
+         </index>
+         <index name="fki_fk_rolemodules_role" unique="false">
+            <column ascending="true" name="role_id"/>
+         </index>
+         <index name="fki_fk_rolemodules_updated" unique="false">
+            <column ascending="true" name="updated_by"/>
+         </index>
+      </table>
+      <table catalog="ancol-rec-hub" name="roles" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="role_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <child catalog="ancol-rec-hub" column="role_id" foreignKey="fk_rolemodules_role" implied="false" onDeleteCascade="false" schema="public" table="role_modules"/>
+            <child catalog="ancol-rec-hub" column="role_id" foreignKey="fk_userroles_role" implied="false" onDeleteCascade="false" schema="public" table="user_roles"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="role_code" nullable="false" remarks="" size="22" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="role_name" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="role_id" sequenceNumberInPK="1"/>
+         <index name="roles_pkey" unique="true">
+            <column ascending="true" name="role_id"/>
+         </index>
+      </table>
+      <table catalog="ancol-rec-hub" name="systemsetting" numRows="1" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="1" digits="0" id="0" name="systemsetting_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="2" id="6" name="revsharing_pct" nullable="false" remarks="" size="5" type="numeric" typeCode="2"/>
+         <primaryKey column="systemsetting_id" sequenceNumberInPK="1"/>
+         <index name="systemsetting_pkey" unique="true">
+            <column ascending="true" name="systemsetting_id"/>
+         </index>
+      </table>
+      <table catalog="ancol-rec-hub" name="user_roles" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_userroles_user" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="role_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="role_id" foreignKey="fk_userroles_role" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_userroles_created" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_userroles_updated" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="user_id" sequenceNumberInPK="1"/>
+         <primaryKey column="role_id" sequenceNumberInPK="2"/>
+         <index name="userroles_pkey" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="role_id"/>
+         </index>
+         <index name="fki_fk_userroles_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_userroles_role" unique="false">
+            <column ascending="true" name="role_id"/>
+         </index>
+         <index name="fki_fk_userroles_updated" unique="false">
+            <column ascending="true" name="updated_by"/>
+         </index>
+         <index name="fki_fk_userroles_user" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table catalog="ancol-rec-hub" name="users" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <child catalog="ancol-rec-hub" column="user_id" foreignKey="fk_refreshtokens_user" implied="false" onDeleteCascade="false" schema="public" table="refresh_tokens"/>
+            <child catalog="ancol-rec-hub" column="created_by" foreignKey="fk_rolemodules_created" implied="false" onDeleteCascade="false" schema="public" table="role_modules"/>
+            <child catalog="ancol-rec-hub" column="updated_by" foreignKey="fk_rolemodules_updated" implied="false" onDeleteCascade="false" schema="public" table="role_modules"/>
+            <child catalog="ancol-rec-hub" column="created_by" foreignKey="fk_userroles_created" implied="false" onDeleteCascade="false" schema="public" table="user_roles"/>
+            <child catalog="ancol-rec-hub" column="updated_by" foreignKey="fk_userroles_updated" implied="false" onDeleteCascade="false" schema="public" table="user_roles"/>
+            <child catalog="ancol-rec-hub" column="user_id" foreignKey="fk_userroles_user" implied="false" onDeleteCascade="false" schema="public" table="user_roles"/>
+            <child catalog="ancol-rec-hub" column="created_by" foreignKey="fk_users_created" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+            <child catalog="ancol-rec-hub" column="updated_by" foreignKey="fk_users_updated" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="email" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="nickname" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="password" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_users_created" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_users_updated" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="8" name="enabled" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="user_id" sequenceNumberInPK="1"/>
+         <index name="users_pkey" unique="true">
+            <column ascending="true" name="user_id"/>
+         </index>
+         <index name="fki_fk_users_created" unique="false">
+            <column ascending="true" name="created_by"/>
+         </index>
+         <index name="fki_fk_users_updated" unique="false">
+            <column ascending="true" name="updated_by"/>
+         </index>
+      </table>
+   </tables>
+</database>
