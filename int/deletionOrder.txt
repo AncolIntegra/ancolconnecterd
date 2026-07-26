@@ -1,8 +1,7 @@
-docsequence
-orderticket
-payments
-orderdetails
-products
-paymentgateway
 sites
+docsequence
+payments
+orderticket
+orderdetails
+paymentgateway
 orders

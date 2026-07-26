@@ -1,7 +1,9 @@
 roles
 modules
 users
+sites
 refresh_tokens
+products
 role_modules
 user_roles
 customers

@@ -2,7 +2,9 @@ systemsetting
 customers
 user_roles
 role_modules
+products
 refresh_tokens
+sites
 users
 modules
 roles
