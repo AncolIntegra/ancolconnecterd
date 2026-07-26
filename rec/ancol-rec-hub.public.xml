@@ -16,6 +16,9 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="loyalti_no" nullable="true" remarks="" size="100" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="6" id="10" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="name_iv" nullable="true" remarks="" size="16" type="bpchar" typeCode="1"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="email_iv" nullable="true" remarks="" size="16" type="bpchar" typeCode="1"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="phone_iv" nullable="true" remarks="" size="16" type="bpchar" typeCode="1"/>
          <primaryKey column="customer_id" sequenceNumberInPK="1"/>
          <index name="customers_pkey" unique="true">
             <column ascending="true" name="customer_id"/>
