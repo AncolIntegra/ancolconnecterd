@@ -4,9 +4,10 @@ users
 refresh_tokens
 paymentgateways
 sites
+customers
 products
 payments
 role_modules
 user_roles
-customers
+paymentstatus
 systemsetting

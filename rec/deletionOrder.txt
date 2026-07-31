@@ -1,9 +1,10 @@
 systemsetting
-customers
+paymentstatus
 user_roles
 role_modules
 payments
 products
+customers
 sites
 paymentgateways
 refresh_tokens
