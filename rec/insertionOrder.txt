@@ -1,9 +1,11 @@
 roles
 modules
 users
-sites
 refresh_tokens
+paymentgateways
+sites
 products
+payments
 role_modules
 user_roles
 customers

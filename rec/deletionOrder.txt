@@ -2,9 +2,11 @@ systemsetting
 customers
 user_roles
 role_modules
+payments
 products
-refresh_tokens
 sites
+paymentgateways
+refresh_tokens
 users
 modules
 roles
