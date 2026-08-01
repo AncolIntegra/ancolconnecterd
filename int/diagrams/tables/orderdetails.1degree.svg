@@ -33,7 +33,7 @@
 <polygon fill="none" stroke="#000000" points="152,-295.7 152,-317.7 262,-317.7 262,-295.7 152,-295.7"/>
 <text text-anchor="start" x="172" y="-302.8" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">qty</text>
 <polygon fill="none" stroke="#000000" points="262,-295.7 262,-317.7 354,-317.7 354,-295.7 262,-295.7"/>
-<text text-anchor="start" x="265" y="-303.4" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">int8[19]</text>
+<text text-anchor="start" x="265" y="-303.4" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">numeric[0]</text>
 <polygon fill="none" stroke="#000000" points="152,-273.7 152,-295.7 262,-295.7 262,-273.7 152,-273.7"/>
 <text text-anchor="start" x="172" y="-280.8" font-family="Helvetica,sans-Serif" font-size="11.00" fill="#000000">price</text>
 <polygon fill="none" stroke="#000000" points="262,-273.7 262,-295.7 354,-295.7 354,-273.7 262,-273.7"/>
