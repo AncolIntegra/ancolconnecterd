@@ -104,6 +104,24 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>fk_orderticket_orderdetails</td>
+                                        <td>
+                                            <table border='0' cellspacing='0' cellpadding='0'>
+                                                <tr>
+                                                    <td><a href='tables/ordertickets.html'>ordertickets</a><span>.orderdetail_id</span></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table border='0' cellspacing='0' cellpadding='0'>
+                                                <tr>
+                                                    <td><a href='tables/orderdetails.html'>orderdetails</a><span>.orderdetail_id</span></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
+                                    </tr>
+                                    <tr>
                                         <td>fk_payments_paymentgateways</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -115,7 +133,7 @@
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
                                                 <tr>
-                                                    <td><a href='tables/paymentgateway.html'>paymentgateway</a><span>.paymentgateway_id</span></td>
+                                                    <td><a href='tables/paymentgateways.html'>paymentgateways</a><span>.paymentgateway_id</span></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -170,24 +188,6 @@
                                             <table border='0' cellspacing='0' cellpadding='0'>
                                                 <tr>
                                                     <td><a href='tables/sites.html'>sites</a><span>.site_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>fk_orderticket_orderdetails</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/orderticket.html'>orderticket</a><span>.orderdetail_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/orderdetails.html'>orderdetails</a><span>.orderdetail_id</span></td>
                                                 </tr>
                                             </table>
                                         </td>

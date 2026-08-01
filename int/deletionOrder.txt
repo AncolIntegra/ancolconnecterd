@@ -1,7 +1,7 @@
 docsequence
 payments
-orderticket
+ordertickets
 orderdetails
 sites
-paymentgateway
+paymentgateways
 orders

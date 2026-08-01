@@ -28,7 +28,7 @@
       </table>
       <table catalog="ancol-int-hub" name="orderdetails" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
-            <child catalog="ancol-int-hub" column="orderdetail_id" foreignKey="fk_orderticket_orderdetails" implied="false" onDeleteCascade="false" schema="public" table="orderticket"/>
+            <child catalog="ancol-int-hub" column="orderdetail_id" foreignKey="fk_orderticket_orderdetails" implied="false" onDeleteCascade="false" schema="public" table="ordertickets"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="order_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-int-hub" column="order_id" foreignKey="fk_orderdetails_order" implied="false" onDeleteCascade="false" schema="public" table="orders"/>
@@ -93,7 +93,7 @@
             <column ascending="true" name="updated_by"/>
          </index>
       </table>
-      <table catalog="ancol-int-hub" name="orderticket" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-int-hub" name="ordertickets" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="orderticket_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-int-hub" column="orderdetail_id" foreignKey="fk_orderticket_orderdetails" implied="false" onDeleteCascade="false" schema="public" table="orderdetails"/>
@@ -112,7 +112,7 @@
             <column ascending="true" name="orderdetail_id"/>
          </index>
       </table>
-      <table catalog="ancol-int-hub" name="paymentgateway" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-int-hub" name="paymentgateways" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="paymentgateway_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <child catalog="ancol-int-hub" column="paymentgateway_id" foreignKey="fk_payments_paymentgateways" implied="false" onDeleteCascade="false" schema="public" table="payments"/>
          </column>
@@ -138,7 +138,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="payment_code" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="payment_time" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="paymentgateway_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
-            <parent catalog="ancol-int-hub" column="paymentgateway_id" foreignKey="fk_payments_paymentgateways" implied="false" onDeleteCascade="false" schema="public" table="paymentgateway"/>
+            <parent catalog="ancol-int-hub" column="paymentgateway_id" foreignKey="fk_payments_paymentgateways" implied="false" onDeleteCascade="false" schema="public" table="paymentgateways"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="order_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-int-hub" column="order_id" foreignKey="fk_payments_orders" implied="false" onDeleteCascade="false" schema="public" table="orders"/>

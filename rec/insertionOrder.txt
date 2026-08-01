@@ -1,11 +1,14 @@
 roles
 modules
 users
-refresh_tokens
-paymentgateways
-sites
 customers
+sites
+orders
 products
+paymentgateways
+orderdetails
+refresh_tokens
+ordertickets
 payments
 role_modules
 user_roles
