@@ -80,7 +80,7 @@
          </index>
       </table>
       <table catalog="ancol-rec-hub" name="orderdetails" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <child catalog="ancol-rec-hub" column="orderdetail_id" foreignKey="fk_ordertickets_orderdetail" implied="false" onDeleteCascade="false" schema="public" table="ordertickets"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="order_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
@@ -118,7 +118,7 @@
          </index>
       </table>
       <table catalog="ancol-rec-hub" name="orders" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="order_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="order_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <child catalog="ancol-rec-hub" column="order_id" foreignKey="fk_orderdetails_order" implied="false" onDeleteCascade="false" schema="public" table="orderdetails"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="order_no" nullable="false" remarks="" size="40" type="varchar" typeCode="12"/>
@@ -143,7 +143,7 @@
          </index>
       </table>
       <table catalog="ancol-rec-hub" name="ordertickets" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="orderticket_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="orderticket_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-rec-hub" column="orderdetail_id" foreignKey="fk_ordertickets_orderdetail" implied="false" onDeleteCascade="false" schema="public" table="orderdetails"/>
          </column>
