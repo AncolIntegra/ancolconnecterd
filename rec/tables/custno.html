@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>users - ancol-rec-hub.public</title>
+        <title>custno - ancol-rec-hub.public</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -73,7 +73,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>users</h1><p><span id="recordNumber">-1</span> rows</p><br />
+                    <h1>custno</h1><p><span id="recordNumber">-1</span> rows</p><br />
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -109,144 +109,48 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="user_id">user_id</span></td>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="custno_id">custno_id</span></td>
+                                    <td>int8</td>
+                                    <td>19</td>
+                                    <td title=''></td>
+                                    <td title='Automatically updated by the database'>√</td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="prefix">prefix</span></td>
+                                    <td>varchar</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="currentnext">currentnext</span></td>
                                     <td>int8</td>
                                     <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
-                                    <td>null</td>
+                                    <td>1</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
-                                            <tr>
-                                                <td title="custno.created_by references users.user_id via fk_custno_created"><a href='custno.html'>custno</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_custno_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="custno.updated_by references users.user_id via fk_custno_updated"><a href='custno.html'>custno</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_custno_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="customers.created_by references users.user_id via fk_customers_created"><a href='customers.html'>customers</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_customers_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="customers.updated_by references users.user_id via fk_customers_updated"><a href='customers.html'>customers</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_customers_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="orderdetails.created_by references users.user_id via fk_orderdetails_created"><a href='orderdetails.html'>orderdetails</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_orderdetails_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="orderdetails.updated_by references users.user_id via fk_orderdetails_updated"><a href='orderdetails.html'>orderdetails</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_orderdetails_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="orders.created_by references users.user_id via fk_orders_created"><a href='orders.html'>orders</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_orders_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="orders.updated_by references users.user_id via fk_orders_updated"><a href='orders.html'>orders</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_orders_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="ordertickets.created_by references users.user_id via fk_ordertickets_created"><a href='ordertickets.html'>ordertickets</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_ordertickets_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="ordertickets.updated_by references users.user_id via fk_ordertickets_updated"><a href='ordertickets.html'>ordertickets</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_ordertickets_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="paymentgateways.created_by references users.user_id via fk_paymentgateway_created"><a href='paymentgateways.html'>paymentgateways</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_paymentgateway_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="paymentgateways.updated_by references users.user_id via fk_paymentgateway_updated"><a href='paymentgateways.html'>paymentgateways</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_paymentgateway_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="payments.created_by references users.user_id via fk_payments_created"><a href='payments.html'>payments</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_payments_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="payments.updated_by references users.user_id via fk_payments_updated"><a href='payments.html'>payments</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_payments_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="products.created_by references users.user_id via fk_products_created"><a href='products.html'>products</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_products_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="products.updated_by references users.user_id via fk_products_updated"><a href='products.html'>products</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_products_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="refresh_tokens.user_id references users.user_id via fk_refreshtokens_user"><a href='refresh_tokens.html'>refresh_tokens</a><span class='relatedKey'>.user_id</span></td>
-                                                <td class="constraint detail">fk_refreshtokens_user</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="role_modules.created_by references users.user_id via fk_rolemodules_created"><a href='role_modules.html'>role_modules</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_rolemodules_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="role_modules.updated_by references users.user_id via fk_rolemodules_updated"><a href='role_modules.html'>role_modules</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_rolemodules_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="sites.created_by references users.user_id via fk_sites_created"><a href='sites.html'>sites</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_sites_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="sites.updated_by references users.user_id via fk_sites_updated"><a href='sites.html'>sites</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_sites_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="user_roles.created_by references users.user_id via fk_userroles_created"><a href='user_roles.html'>user_roles</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_userroles_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="user_roles.updated_by references users.user_id via fk_userroles_updated"><a href='user_roles.html'>user_roles</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_userroles_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="user_roles.user_id references users.user_id via fk_userroles_user"><a href='user_roles.html'>user_roles</a><span class='relatedKey'>.user_id</span></td>
-                                                <td class="constraint detail">fk_userroles_user</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="users.created_by references users.user_id via fk_users_created"><a href='users.html'>users</a><span class='relatedKey'>.created_by</span></td>
-                                                <td class="constraint detail">fk_users_created</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td title="users.updated_by references users.user_id via fk_users_updated"><a href='users.html'>users</a><span class='relatedKey'>.updated_by</span></td>
-                                                <td class="constraint detail">fk_users_updated</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
                                         </table>
                                     </td>
                                     <td>
@@ -256,42 +160,42 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="email">email</span></td>
+                                    <td><span id="interval">interval</span></td>
+                                    <td>int8</td>
+                                    <td>19</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>1</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="minlength">minlength</span></td>
+                                    <td>int8</td>
+                                    <td>19</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>5</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="suffix">suffix</span></td>
                                     <td>varchar</td>
-                                    <td>100</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="nickname">nickname</span></td>
-                                    <td>varchar</td>
-                                    <td>100</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="password">password</span></td>
-                                    <td>text</td>
                                     <td>2147483647</td>
                                     <td title='nullable'>√</td>
                                     <td title=''></td>
@@ -324,23 +228,6 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="updated">updated</span></td>
-                                    <td>timestamptz</td>
-                                    <td>35,6</td>
-                                    <td title='nullable'>√</td>
-                                    <td title=''></td>
-                                    <td>CURRENT_TIMESTAMP</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
                                     <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="created_by">created_by</span></td>
                                     <td>int8</td>
                                     <td>19</td>
@@ -354,10 +241,27 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
-                                                <td title="users.created_by references users.user_id via fk_users_created"><a href='users.html'>users</a><span class='relatedKey'>.user_id</span></td>
-                                                <td class="constraint detail">fk_users_created</td>
+                                                <td title="custno.created_by references users.user_id via fk_custno_created"><a href='users.html'>users</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">fk_custno_created</td>
                                                 <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="updated">updated</span></td>
+                                    <td>timestamptz</td>
+                                    <td>35,6</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>CURRENT_TIMESTAMP</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
                                     <td></td>
@@ -376,27 +280,10 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
-                                                <td title="users.updated_by references users.user_id via fk_users_updated"><a href='users.html'>users</a><span class='relatedKey'>.user_id</span></td>
-                                                <td class="constraint detail">fk_users_updated</td>
+                                                <td title="custno.updated_by references users.user_id via fk_custno_updated"><a href='users.html'>users</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">fk_custno_updated</td>
                                                 <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="enabled">enabled</span></td>
-                                    <td>bool</td>
-                                    <td>1</td>
-                                    <td title='nullable'>√</td>
-                                    <td title=''></td>
-                                    <td>true</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
                                     <td></td>
@@ -432,19 +319,19 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> users_pkey</td>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> custno_pkey</td>
                                     <td>Primary key</td>
                                     <td><span title='Ascending'>Asc</span></td>
-                                    <td>user_id</td>
+                                    <td>custno_id</td>
                                 </tr>
                                 <tr>
-                                    <td title='Indexed'>fki_fk_users_created</td>
+                                    <td title='Indexed'>fki_fk_custno_created</td>
                                     <td>Performance</td>
                                     <td><span title='Ascending'>Asc</span></td>
                                     <td>created_by</td>
                                 </tr>
                                 <tr>
-                                    <td title='Indexed'>fki_fk_users_updated</td>
+                                    <td title='Indexed'>fki_fk_custno_updated</td>
                                     <td>Performance</td>
                                     <td><span title='Ascending'>Asc</span></td>
                                     <td>updated_by</td>
@@ -472,11 +359,11 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         
-                                        <a name='diagram'><object type="image/svg+xml" id="oneDegreeImg" data="../diagrams/tables/users.1degree.svg" class="diagram" border="0" align="left"></object></a>
+                                        <a name='diagram'><object type="image/svg+xml" id="oneDegreeImg" data="../diagrams/tables/custno.1degree.svg" class="diagram" border="0" align="left"></object></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         
-                                        <a name='diagram'><object type="image/svg+xml" id="twodegreesDegreeImg" data="../diagrams/tables/users.2degrees.svg" class="diagram" border="0" align="left"></object></a>
+                                        <a name='diagram'><object type="image/svg+xml" id="twodegreesDegreeImg" data="../diagrams/tables/custno.2degrees.svg" class="diagram" border="0" align="left"></object></a>
                                     </div>
                                 </div>
                             </div>

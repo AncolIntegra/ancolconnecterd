@@ -8,6 +8,7 @@ products
 paymentgateways
 orderdetails
 refresh_tokens
+custno
 ordertickets
 payments
 role_modules
