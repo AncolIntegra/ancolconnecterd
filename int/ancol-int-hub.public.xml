@@ -26,7 +26,7 @@
             <column ascending="true" name="updated_by"/>
          </index>
       </table>
-      <table catalog="ancol-int-hub" name="orderdetails" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-int-hub" name="orderdetails" numRows="52" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <child catalog="ancol-int-hub" column="orderdetail_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="ordertickets"/>
          </column>
@@ -44,6 +44,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="product_name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="tnc" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="site_code" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="status" nullable="true" remarks="" size="2" type="varchar" typeCode="12"/>
          <primaryKey column="orderdetail_id" sequenceNumberInPK="1"/>
          <index name="orderdetails_pkey" unique="true">
             <column ascending="true" name="orderdetail_id"/>
@@ -58,7 +59,7 @@
             <column ascending="true" name="updated_by"/>
          </index>
       </table>
-      <table catalog="ancol-int-hub" name="orders" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-int-hub" name="orders" numRows="20" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="order_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <child catalog="ancol-int-hub" column="order_id" foreignKey="fk_orderdetails_order" implied="false" onDeleteCascade="false" schema="public" table="orderdetails"/>
             <child catalog="ancol-int-hub" column="order_id" foreignKey="fk_payments_orders" implied="false" onDeleteCascade="false" schema="public" table="payments"/>
@@ -88,9 +89,12 @@
          <index name="fki_fk_orders_updated" unique="false">
             <column ascending="true" name="updated_by"/>
          </index>
+         <index name="idx_orders_flow_token_order_date" unique="true">
+            <column ascending="true" name="flow_token"/>
+         </index>
       </table>
-      <table catalog="ancol-int-hub" name="ordertickets" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="orderticket_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+      <table catalog="ancol-int-hub" name="ordertickets" numRows="56" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="orderticket_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ticket_code" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
          <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
          <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>

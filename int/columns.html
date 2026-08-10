@@ -475,6 +475,20 @@
         "comments": ""
     },
     {
+        "tableName": "orderdetails",
+        "tableFileName": "orderdetails",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "status",
+        "type": "varchar",
+        "length": 2,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": ""
+    },
+    {
         "tableName": "orders",
         "tableFileName": "orders",
         "tableType": "Table",
@@ -688,9 +702,9 @@
         "tableName": "orders",
         "tableFileName": "orders",
         "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "flow_token",
+        "keyClass": "indexedColumn",
+        "keyTitle": "Indexed",
+        "name": "<i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>flow_token",
         "type": "text",
         "length": 2147483647,
         "nullable": "√",
@@ -708,7 +722,7 @@
         "type": "int8",
         "length": 19,
         "nullable": "",
-        "autoUpdated": "",
+        "autoUpdated": "√",
         "defaultValue": "null",
         "comments": ""
     },

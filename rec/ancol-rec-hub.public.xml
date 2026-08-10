@@ -74,6 +74,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="sortno" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="module_icon" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="module_label" nullable="true" remarks="" size="40" type="varchar" typeCode="12"/>
          <primaryKey column="module_id" sequenceNumberInPK="1"/>
          <index name="modules_pkey" unique="true">
             <column ascending="true" name="module_id"/>
@@ -100,6 +102,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_orderdetails_updated" implied="false" onDeleteCascade="false" schema="public" table="users"/>
          </column>
+         <column autoUpdated="false" defaultValue="0" digits="2" id="10" name="pbjt_amt" nullable="true" remarks="" size="18" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="0" digits="2" id="11" name="base_amt" nullable="true" remarks="" size="18" type="numeric" typeCode="2"/>
          <primaryKey column="orderdetail_id" sequenceNumberInPK="1"/>
          <index name="orderdetails_pkey" unique="true">
             <column ascending="true" name="orderdetail_id"/>
@@ -137,12 +141,14 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="customer_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-rec-hub" column="customer_id" foreignKey="fk_orders_customers" implied="false" onDeleteCascade="false" schema="public" table="customers"/>
          </column>
+         <column autoUpdated="false" defaultValue="0" digits="2" id="11" name="pbjt_amt" nullable="true" remarks="" size="18" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="0" digits="2" id="12" name="base_amt" nullable="true" remarks="" size="18" type="numeric" typeCode="2"/>
          <primaryKey column="order_id" sequenceNumberInPK="1"/>
          <index name="orders_pkey" unique="true">
             <column ascending="true" name="order_id"/>
          </index>
       </table>
-      <table catalog="ancol-rec-hub" name="ordertickets" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-rec-hub" name="ordertickets" numRows="0" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="orderticket_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-rec-hub" column="orderdetail_id" foreignKey="fk_ordertickets_orderdetail" implied="false" onDeleteCascade="false" schema="public" table="orderdetails"/>
@@ -258,7 +264,7 @@
             <column ascending="true" name="updated_by"/>
          </index>
       </table>
-      <table catalog="ancol-rec-hub" name="refresh_tokens" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-rec-hub" name="refresh_tokens" numRows="2" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('refresh_tokens_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="token" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="expiry_date" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
@@ -313,7 +319,7 @@
          </index>
       </table>
       <table catalog="ancol-rec-hub" name="roles" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="role_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="role_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <child catalog="ancol-rec-hub" column="role_id" foreignKey="fk_rolemodules_role" implied="false" onDeleteCascade="false" schema="public" table="role_modules"/>
             <child catalog="ancol-rec-hub" column="role_id" foreignKey="fk_userroles_role" implied="false" onDeleteCascade="false" schema="public" table="user_roles"/>
          </column>
@@ -343,6 +349,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-rec-hub" column="user_id" foreignKey="fk_sites_updated" implied="false" onDeleteCascade="false" schema="public" table="users"/>
          </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="seqno" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
          <primaryKey column="site_id" sequenceNumberInPK="1"/>
          <index name="sites_pkey" unique="true">
             <column ascending="true" name="site_id"/>
@@ -362,6 +369,8 @@
          <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="2" id="6" name="revsharing_pct" nullable="false" remarks="" size="5" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="10" digits="0" id="7" name="pbjt_rate" nullable="true" remarks="" size="0" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="8" name="is_pbjt_include" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
          <primaryKey column="systemsetting_id" sequenceNumberInPK="1"/>
          <index name="systemsetting_pkey" unique="true">
             <column ascending="true" name="systemsetting_id"/>
@@ -402,7 +411,7 @@
          </index>
       </table>
       <table catalog="ancol-rec-hub" name="users" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <child catalog="ancol-rec-hub" column="created_by" foreignKey="fk_custno_created" implied="false" onDeleteCascade="false" schema="public" table="custno"/>
             <child catalog="ancol-rec-hub" column="updated_by" foreignKey="fk_custno_updated" implied="false" onDeleteCascade="false" schema="public" table="custno"/>
             <child catalog="ancol-rec-hub" column="created_by" foreignKey="fk_customers_created" implied="false" onDeleteCascade="false" schema="public" table="customers"/>

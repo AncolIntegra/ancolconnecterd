@@ -573,6 +573,34 @@
         "comments": ""
     },
     {
+        "tableName": "modules",
+        "tableFileName": "modules",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "module_icon",
+        "type": "text",
+        "length": 2147483647,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": ""
+    },
+    {
+        "tableName": "modules",
+        "tableFileName": "modules",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "module_label",
+        "type": "varchar",
+        "length": 40,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": ""
+    },
+    {
         "tableName": "orderdetails",
         "tableFileName": "orderdetails",
         "tableType": "Table",
@@ -710,6 +738,34 @@
         "nullable": "√",
         "autoUpdated": "",
         "defaultValue": "null",
+        "comments": ""
+    },
+    {
+        "tableName": "orderdetails",
+        "tableFileName": "orderdetails",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "pbjt_amt",
+        "type": "numeric",
+        "length": 18,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "0",
+        "comments": ""
+    },
+    {
+        "tableName": "orderdetails",
+        "tableFileName": "orderdetails",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "base_amt",
+        "type": "numeric",
+        "length": 18,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "0",
         "comments": ""
     },
     {
@@ -864,6 +920,34 @@
         "nullable": "√",
         "autoUpdated": "",
         "defaultValue": "null",
+        "comments": ""
+    },
+    {
+        "tableName": "orders",
+        "tableFileName": "orders",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "pbjt_amt",
+        "type": "numeric",
+        "length": 18,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "0",
+        "comments": ""
+    },
+    {
+        "tableName": "orders",
+        "tableFileName": "orders",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "base_amt",
+        "type": "numeric",
+        "length": 18,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "0",
         "comments": ""
     },
     {
@@ -1632,7 +1716,7 @@
         "type": "int8",
         "length": 19,
         "nullable": "",
-        "autoUpdated": "",
+        "autoUpdated": "√",
         "defaultValue": "null",
         "comments": ""
     },
@@ -1833,6 +1917,20 @@
         "comments": ""
     },
     {
+        "tableName": "sites",
+        "tableFileName": "sites",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "seqno",
+        "type": "int8",
+        "length": 19,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": ""
+    },
+    {
         "tableName": "systemsetting",
         "tableFileName": "systemsetting",
         "tableType": "Table",
@@ -1931,6 +2029,34 @@
         "comments": ""
     },
     {
+        "tableName": "systemsetting",
+        "tableFileName": "systemsetting",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "pbjt_rate",
+        "type": "numeric",
+        "length": 0,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "10",
+        "comments": ""
+    },
+    {
+        "tableName": "systemsetting",
+        "tableFileName": "systemsetting",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "is_pbjt_include",
+        "type": "bool",
+        "length": 1,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "true",
+        "comments": ""
+    },
+    {
         "tableName": "user_roles",
         "tableFileName": "user_roles",
         "tableType": "Table",
@@ -2024,7 +2150,7 @@
         "type": "int8",
         "length": 19,
         "nullable": "",
-        "autoUpdated": "",
+        "autoUpdated": "√",
         "defaultValue": "null",
         "comments": ""
     },
