@@ -179,6 +179,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="status_code" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="6" id="16" name="expiry_time" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="currency" nullable="true" remarks="" size="3" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="payment_code" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
          <primaryKey column="payment_id" sequenceNumberInPK="1"/>
          <index name="payment_pkey" unique="true">
             <column ascending="true" name="payment_id"/>

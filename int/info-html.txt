@@ -1,4 +1,4 @@
-date=2026-08-12 09:50:31+0700
+date=2026-08-12 10:13:41+0700
 os=Windows 10 10.0
 schemaspy-version=7.0.2
 schemaspy-revision=v7.0.2
