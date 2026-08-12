@@ -118,6 +118,11 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
+                                                <td title="paymentmethod.paymentgateway_id references paymentgateways.paymentgateway_id via fk_paymentmethod_paymentgateway"><a href='paymentmethod.html'>paymentmethod</a><span class='relatedKey'>.paymentgateway_id</span></td>
+                                                <td class="constraint detail">fk_paymentmethod_paymentgateway</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
                                                 <td title="payments.paymentgateway_id references paymentgateways.paymentgateway_id via fk_payments_paymentgateways"><a href='payments.html'>payments</a><span class='relatedKey'>.paymentgateway_id</span></td>
                                                 <td class="constraint detail">fk_payments_paymentgateways</td>
                                                 <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>

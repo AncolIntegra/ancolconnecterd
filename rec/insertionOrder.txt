@@ -9,6 +9,7 @@ paymentgateways
 orderdetails
 refresh_tokens
 custno
+trxstatus
 ordertickets
 payments
 role_modules

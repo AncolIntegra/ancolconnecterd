@@ -1,6 +1,7 @@
 sites
 docsequence
 payments
+paymentmethod
 ordertickets
 orderdetails
 paymentgateways

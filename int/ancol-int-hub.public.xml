@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <database name="ancol-int-hub" schema="public" type="PostgreSQL - 15.17">
    <tables>
-      <table catalog="ancol-int-hub" name="docsequence" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-int-hub" name="docsequence" numRows="1" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="docsequence_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="doc_code" nullable="false" remarks="" size="3" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="doc_name" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
@@ -26,7 +26,7 @@
             <column ascending="true" name="updated_by"/>
          </index>
       </table>
-      <table catalog="ancol-int-hub" name="orderdetails" numRows="52" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-int-hub" name="orderdetails" numRows="109" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="orderdetail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <child catalog="ancol-int-hub" column="orderdetail_id" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="ordertickets"/>
          </column>
@@ -59,7 +59,7 @@
             <column ascending="true" name="updated_by"/>
          </index>
       </table>
-      <table catalog="ancol-int-hub" name="orders" numRows="20" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-int-hub" name="orders" numRows="47" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="order_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <child catalog="ancol-int-hub" column="order_id" foreignKey="fk_orderdetails_order" implied="false" onDeleteCascade="false" schema="public" table="orderdetails"/>
             <child catalog="ancol-int-hub" column="order_id" foreignKey="fk_payments_orders" implied="false" onDeleteCascade="false" schema="public" table="payments"/>
@@ -113,6 +113,7 @@
       </table>
       <table catalog="ancol-int-hub" name="paymentgateways" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="paymentgateway_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <child catalog="ancol-int-hub" column="paymentgateway_id" foreignKey="fk_paymentmethod_paymentgateway" implied="false" onDeleteCascade="false" schema="public" table="paymentmethod"/>
             <child catalog="ancol-int-hub" column="paymentgateway_id" foreignKey="fk_payments_paymentgateways" implied="false" onDeleteCascade="false" schema="public" table="payments"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="pg_code" nullable="false" remarks="" size="5" type="varchar" typeCode="12"/>
@@ -132,30 +133,52 @@
             <column ascending="true" name="updated_by"/>
          </index>
       </table>
-      <table catalog="ancol-int-hub" name="payments" remarks="" schema="public" type="TABLE">
+      <table catalog="ancol-int-hub" name="paymentmethod" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="paymentmethod_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="paymentgateway_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent catalog="ancol-int-hub" column="paymentgateway_id" foreignKey="fk_paymentmethod_paymentgateway" implied="false" onDeleteCascade="false" schema="public" table="paymentgateways"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="method_code" nullable="true" remarks="" size="40" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="method_name" nullable="true" remarks="" size="60" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="bank_code" nullable="true" remarks="" size="20" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="bank_name" nullable="true" remarks="" size="60" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="7" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="11" name="is_active" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="paymentmethod_id" sequenceNumberInPK="1"/>
+         <index name="paymentmethod_pkey" unique="true">
+            <column ascending="true" name="paymentmethod_id"/>
+         </index>
+         <index name="fki_fk_paymentmethod_paymentgateway" unique="false">
+            <column ascending="true" name="paymentgateway_id"/>
+         </index>
+      </table>
+      <table catalog="ancol-int-hub" name="payments" numRows="27" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="payment_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="payment_code" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="transaction_time" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="paymentgateway_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+         <column autoUpdated="false" defaultValue="null" digits="6" id="1" name="transaction_time" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="paymentgateway_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-int-hub" column="paymentgateway_id" foreignKey="fk_payments_paymentgateways" implied="false" onDeleteCascade="false" schema="public" table="paymentgateways"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="order_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="order_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
             <parent catalog="ancol-int-hub" column="order_id" foreignKey="fk_payments_orders" implied="false" onDeleteCascade="false" schema="public" table="orders"/>
          </column>
-         <column autoUpdated="false" defaultValue="0" digits="2" id="5" name="payment_amt" nullable="false" remarks="" size="18" type="numeric" typeCode="2"/>
-         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="7" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="payment_method" nullable="true" remarks="" size="2" type="varchar" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="payment_number" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="bank_code" nullable="true" remarks="" size="20" type="varchar" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="6" id="13" name="settlement_time" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="payment_status" nullable="true" remarks="" size="2" type="varchar" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="transaction_id" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="status_code" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="6" id="17" name="expiry_time" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="currency" nullable="true" remarks="" size="3" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="0" digits="2" id="4" name="payment_amt" nullable="false" remarks="" size="18" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="updated" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="created_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="updated_by" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="payment_method" nullable="true" remarks="" size="2" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="payment_number" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="bank_code" nullable="true" remarks="" size="20" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="12" name="settlement_time" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="payment_status" nullable="true" remarks="" size="2" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="transaction_id" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="status_code" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="16" name="expiry_time" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="currency" nullable="true" remarks="" size="3" type="varchar" typeCode="12"/>
          <primaryKey column="payment_id" sequenceNumberInPK="1"/>
          <index name="payment_pkey" unique="true">
             <column ascending="true" name="payment_id"/>

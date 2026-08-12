@@ -4,6 +4,7 @@ user_roles
 role_modules
 payments
 ordertickets
+trxstatus
 custno
 refresh_tokens
 orderdetails

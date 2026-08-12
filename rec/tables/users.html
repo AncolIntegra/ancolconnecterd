@@ -223,6 +223,16 @@
                                                 <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                             <tr>
+                                                <td title="trxstatus.created_by references users.user_id via fk_trxstatus_created"><a href='trxstatus.html'>trxstatus</a><span class='relatedKey'>.created_by</span></td>
+                                                <td class="constraint detail">fk_trxstatus_created</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="trxstatus.updated_by references users.user_id via fk_trxstatus_updated"><a href='trxstatus.html'>trxstatus</a><span class='relatedKey'>.updated_by</span></td>
+                                                <td class="constraint detail">fk_trxstatus_updated</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
                                                 <td title="user_roles.created_by references users.user_id via fk_userroles_created"><a href='user_roles.html'>user_roles</a><span class='relatedKey'>.created_by</span></td>
                                                 <td class="constraint detail">fk_userroles_created</td>
                                                 <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
